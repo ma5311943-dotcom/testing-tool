@@ -11,7 +11,7 @@ const History = ({ userEmail }) => {
     if (!userEmail) return;
 
     setLoading(true);
-    fetch(`http://localhost:5000/api/history/${userEmail}`)
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/history/${userEmail}`)
       .then((res) => res.json())
       .then((data) => {
         // Normalize results: treat 'success' or 'fail' explicitly
@@ -55,9 +55,8 @@ const History = ({ userEmail }) => {
               <div className="history-icon">📄</div>
               <div className="history-status">
                 <span
-                  className={`status-badge ${
-                    item.result === "success" ? "passed" : "failed"
-                  }`}
+                  className={`status-badge ${item.result === "success" ? "passed" : "failed"
+                    }`}
                 >
                   {item.result === "success" ? "Passed" : "Failed"}
                 </span>

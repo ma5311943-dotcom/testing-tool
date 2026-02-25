@@ -23,7 +23,7 @@ const AdminDashboard = () => {
     const modalRef = useRef(null);
 
     // Assuming API is on localhost:5000/api as per server config
-    const API_URL = "http://localhost:5000/api";
+    const API_URL = import.meta.env.VITE_API_BASE_URL;
 
     const fetchUsers = async () => {
         try {

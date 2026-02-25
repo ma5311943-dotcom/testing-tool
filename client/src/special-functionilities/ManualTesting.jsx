@@ -120,7 +120,7 @@ const ManualTesting = ({ role, normalTokens, specialTokens }) => {
         });
 
         try {
-            const response = await fetch("http://localhost:5000/api/test/run-instant", {
+            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/test/run-instant`, {
 
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

@@ -122,14 +122,14 @@ export default function App() {
           clerkUser.primaryEmailAddress?.emailAddress ||
           clerkUser.emailAddresses[0]?.emailAddress;
 
-        await fetch("http://localhost:5000/api/user/save", {
+        await fetch(`${import.meta.env.VITE_API_BASE_URL}/user/save`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ clerkId: clerkUser.id, email }),
         });
 
         const roleResponse = await fetch(
-          `http://localhost:5000/api/user/${clerkUser.id}`
+          `${import.meta.env.VITE_API_BASE_URL}/user/${clerkUser.id}`
         );
         const roleData = await roleResponse.json();
         setRole(roleData.role?.toLowerCase() || "user");
@@ -152,7 +152,7 @@ export default function App() {
   const fetchUserTokens = async () => {
     if (!clerkUser) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/user/${clerkUser.id}`);
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/user/${clerkUser.id}`);
       const data = await res.json();
       if (data.normalTokens !== undefined) setNormalTokens(data.normalTokens);
       if (data.specialTokens !== undefined)
@@ -180,7 +180,7 @@ export default function App() {
         clerkUser?.primaryEmailAddress?.emailAddress ||
         clerkUser?.emailAddresses?.[0]?.emailAddress;
 
-      const response = await fetch("http://localhost:5000/api/test", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/test`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url, email }),
@@ -196,7 +196,7 @@ export default function App() {
 
       if (clerkUser) {
         fetchUserTokens();
-        await fetch("http://localhost:5000/api/history", {
+        await fetch(`${import.meta.env.VITE_API_BASE_URL}/history`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userEmail: email, url, result: data }),

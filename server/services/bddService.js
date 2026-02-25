@@ -48,7 +48,7 @@ exports.runBDDTest = async (testCase) => {
         // Adding double quotes to handle spaces in path (e.g., "Muhammad Ilyas")
         const cucumberBin = process.platform === 'win32'
             ? `"${path.join(cwd, 'node_modules', '.bin', 'cucumber-js.cmd')}"`
-            : 'npx cucumber-js';
+            : path.join(cwd, 'node_modules', '.bin', 'cucumber-js');
 
         console.log(`[BDD ENGINE] Protocol Spawning: ${cucumberBin}`);
 

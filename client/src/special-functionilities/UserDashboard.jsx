@@ -46,7 +46,7 @@ const UserDashboard = () => {
     setLoading(true);
 
     // Fetch History
-    const fetchHistory = fetch(`http://localhost:5000/api/history/${email}`)
+    const fetchHistory = fetch(`${import.meta.env.VITE_API_BASE_URL}/history/${email}`)
       .then((res) => res.json())
       .then((data) => {
         const normalizedData = Array.isArray(data) ? data.map((item) => ({
@@ -60,7 +60,7 @@ const UserDashboard = () => {
       });
 
     // Fetch User Details (Tokens)
-    const fetchUser = fetch(`http://localhost:5000/api/user/${email}`)
+    const fetchUser = fetch(`${import.meta.env.VITE_API_BASE_URL}/user/${email}`)
       .then(res => res.json())
       .then(data => {
         if (data && !data.message) {

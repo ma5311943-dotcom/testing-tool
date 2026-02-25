@@ -13,7 +13,7 @@ const ChatPage = ({ role }) => {
     const messagesEndRef = useRef(null);
 
     const email = user?.primaryEmailAddress?.emailAddress || user?.emailAddresses[0]?.emailAddress;
-    const API_URL = "http://localhost:5000/api";
+    const API_URL = import.meta.env.VITE_API_BASE_URL;
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -148,7 +148,7 @@ const ChatPage = ({ role }) => {
                                     <div
                                         key={i}
                                         className={`message-bubble ${(role === 'admin' && m.senderEmail === 'admin') ||
-                                                (role !== 'admin' && m.senderEmail === email) ? 'sent' : 'received'
+                                            (role !== 'admin' && m.senderEmail === email) ? 'sent' : 'received'
                                             }`}
                                     >
                                         <div className="bubble-content">

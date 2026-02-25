@@ -17,7 +17,7 @@ setWorldConstructor(CustomWorld);
 Before(async function () {
     console.log("[BDD ENGINE] Launching browser instance...");
     this.browser = await puppeteer.launch({
-        headless: false,
+        headless: "new",
         defaultViewport: { width: 1366, height: 768 },
         args: [
             '--no-sandbox',

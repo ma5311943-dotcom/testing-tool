@@ -27,6 +27,10 @@ yarn-error.log*
 *.swp
 *.swo
 
+# Temporary BDD files
+server/temp_bdd/
+temp_bdd/
+
 # OS files
 .DS_Store
 Thumbs.db
